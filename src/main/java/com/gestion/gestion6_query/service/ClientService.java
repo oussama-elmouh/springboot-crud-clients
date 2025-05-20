@@ -1,10 +1,12 @@
 package com.gestion.gestion6_query.service;
 
 import com.gestion.gestion6_query.entity.Client;
+import com.gestion.gestion6_query.entity.Orders;
 import com.gestion.gestion6_query.repo.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,4 +35,10 @@ public class ClientService {
     public List<Client> findClientsByName(String ville) {
         return clientRepository.findClientsByVille(ville);
     }
+
+    public List<Orders> getOrdersByClientId(Long clientId) {
+        return clientRepository.findById(clientId).map(Client::getOrders)
+                .orElse(Collections.emptyList());}
 }
+
+

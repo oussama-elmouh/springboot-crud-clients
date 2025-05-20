@@ -1,6 +1,7 @@
 package com.gestion.gestion6_query.controller;
 
 import com.gestion.gestion6_query.entity.Client;
+import com.gestion.gestion6_query.entity.Orders;
 import com.gestion.gestion6_query.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,4 +40,10 @@ public class ClientController {
     public List<Client> getClientsByName(@RequestParam String name) {
         return clientService.findClientsByName(name);
     }
+
+    @GetMapping("/{id}/orders")
+    public List<Orders> getOrdersByClientId(@PathVariable Long id) {
+        return clientService.getOrdersByClientId(id);
+    }
+
 }

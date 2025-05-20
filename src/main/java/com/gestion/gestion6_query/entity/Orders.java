@@ -20,4 +20,8 @@ public class Orders {
 
     @Temporal(TemporalType.DATE)
     private Date dateC;
+
+    @ManyToOne
+    @JoinColumn(name="client_id",referencedColumnName = "id")
+    private Client client;
 }
